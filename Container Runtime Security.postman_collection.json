@@ -7,105 +7,782 @@
 	},
 	"item": [
 		{
-			"name": "Upload a Network Policy - Block httpd port 80",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
+			"name": "Images",
+			"item": [
+				{
+					"name": "Get a List of Instrumented Images",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{base_url}}/crs/v1.2/api/Images",
+							"protocol": "https",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"crs",
+								"v1.2",
+								"api",
+								"Images"
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"Name\": \"Block_httpd\",\n    \"SchemaVersion\": \"v1.0\",\n    \"DefaultNetworkAction\": \"allow\",\n    \"DefaultProgramAction\": \"allow\",\n    \"DefaultFileAction\": \"allow\",\n    \"Rules\": [\n        {\n            \"Name\": \"Block port 80\",\n             \"RuleType\": \"listener\",\n             \"ListeningPort\": 80,\n             \"Action\": \"deny\",\n             \"ListeningAddr\": \"*\"\n        }\n    ],\n    \"IgnoredSyscalls\": [],\n    \"Limits\": {\n        \"MaxNumProc\": 0,\n        \"MaxProcLife\": 0,\n        \"Syscalls\": [],\n        \"Processes\": []\n    },\n    \"Mode\": 0,\n    \"Behavioral\": true,\n    \"Description\": \"Block Access to HTTPD Port 80\"\n}"
+				{
+					"name": "Count of Images Instrumented",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{base_url}}/crs/v1.2/api/ImagesInstrumented",
+							"protocol": "https",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"crs",
+								"v1.2",
+								"api",
+								"ImagesInstrumented"
+							]
+						}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "https://{{base_url}}/crs/v1.2/api/Policies/",
-					"protocol": "https",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"crs",
-						"v1.2",
-						"api",
-						"Policies",
-						""
-					]
-				},
-				"description": "Upload a policy to block access to HTTPD port 80"
-			},
-			"response": []
+				{
+					"name": "Get Details of an Instrumented Image",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{base_url}}/crs/v1.2/api/Images/<image_id>",
+							"protocol": "https",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"crs",
+								"v1.2",
+								"api",
+								"Images",
+								"<image_id>"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
-			"name": "List all policies",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
+			"name": "Policies",
+			"item": [
+				{
+					"name": "Upload a Network Policy - Block httpd port 80",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"Name\": \"Block_httpd\",\n    \"SchemaVersion\": \"v1.0\",\n    \"DefaultNetworkAction\": \"allow\",\n    \"DefaultProgramAction\": \"allow\",\n    \"DefaultFileAction\": \"allow\",\n    \"Rules\": [\n        {\n            \"Name\": \"Block port 80\",\n             \"RuleType\": \"listener\",\n             \"ListeningPort\": 80,\n             \"Action\": \"deny\",\n             \"ListeningAddr\": \"*\"\n        }\n    ],\n    \"IgnoredSyscalls\": [],\n    \"Limits\": {\n        \"MaxNumProc\": 0,\n        \"MaxProcLife\": 0,\n        \"Syscalls\": [],\n        \"Processes\": []\n    },\n    \"Mode\": 0,\n    \"Behavioral\": true,\n    \"Description\": \"Block Access to HTTPD Port 80\"\n}"
+						},
+						"url": {
+							"raw": "https://{{base_url}}/crs/v1.2/api/Policies/",
+							"protocol": "https",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"crs",
+								"v1.2",
+								"api",
+								"Policies",
+								""
+							]
+						},
+						"description": "Upload a policy to block access to HTTPD port 80"
+					},
+					"response": []
 				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://{{base_url}}/crs/v1.2/api/Policies/",
-					"protocol": "https",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"crs",
-						"v1.2",
-						"api",
-						"Policies",
-						""
-					]
+				{
+					"name": "List all policies",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{base_url}}/crs/v1.2/api/Policies/",
+							"protocol": "https",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"crs",
+								"v1.2",
+								"api",
+								"Policies",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List details of a policy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{base_url}}/crs/v1.2/api/Policies/<REPLACE_THIS_WITH_THE_POLICY_ID_FROM_QUALYS_UI_URL>",
+							"protocol": "https",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"crs",
+								"v1.2",
+								"api",
+								"Policies",
+								"<REPLACE_THIS_WITH_THE_POLICY_ID_FROM_QUALYS_UI_URL>"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a Policy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://{{base_url}}/crs/v1.2/api/Policies/<REPLACE_THIS_WITH_THE_POLICY_ID_FROM_QUALYS_UI_URL>",
+							"protocol": "https",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"crs",
+								"v1.2",
+								"api",
+								"Policies",
+								"<REPLACE_THIS_WITH_THE_POLICY_ID_FROM_QUALYS_UI_URL>"
+							]
+						},
+						"description": "This request removes an existing policy, whose ID should be set in the variable {{policy_ref}}"
+					},
+					"response": []
+				},
+				{
+					"name": "Upload a Network Policy - Block SSHD from ANY",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"Name\": \"Block_sshd\",\n    \"SchemaVersion\": \"v1.0\",\n    \"DefaultNetworkAction\": \"allow\",\n    \"DefaultProgramAction\": \"allow\",\n    \"DefaultFileAction\": \"allow\",\n    \"Rules\": [\n        {\n            \"Name\": \"Block port 22\",\n             \"RuleType\": \"listener\",\n             \"ListeningPort\": 22,\n             \"Action\": \"deny\",\n             \"ListeningAddr\": \"*\"\n        }\n    ],\n    \"IgnoredSyscalls\": [],\n    \"Limits\": {\n        \"MaxNumProc\": 0,\n        \"MaxProcLife\": 0,\n        \"Syscalls\": [],\n        \"Processes\": []\n    },\n    \"Mode\": 0,\n    \"Behavioral\": false,\n    \"Description\": \"Block Any IP Address to SSHD\"\n\n}"
+						},
+						"url": {
+							"raw": "https://{{base_url}}/crs/v1.2/api/Policies/",
+							"protocol": "https",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"crs",
+								"v1.2",
+								"api",
+								"Policies",
+								""
+							]
+						},
+						"description": "Block any IP Address to SSHD"
+					},
+					"response": []
+				},
+				{
+					"name": "Upload an Application Policy - deny cat access to passwd",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"Name\": \"Deny access\",\n    \"SchemaVersion\": \"v1.0\",\n    \"DefaultNetworkAction\": \"allow\",\n    \"DefaultProgramAction\": \"allow\",\n    \"DefaultFileAction\": \"allow\",\n    \"Rules\": [\n        {\n            \"Name\": \"Deny passwd\",\n            \"InActive\": false,\n            \"RuleType\": \"syscall\",\n            \"Program\": \"/bin/cat\",\n            \"Action\": \"deny\",\n            \"File\": \"\",\n            \"Syscall\": \"sys_open\",\n            \"Arg1\": \"/etc/passwd\",\n            \"Arg2\": \"\",\n            \"Arg3\": \"\"\n        }\n    ],\n    \"IgnoredSyscalls\": [],\n    \"Limits\": {\n        \"MaxNumProc\": 0,\n        \"MaxProcLife\": 0,\n        \"Syscalls\": [],\n        \"Processes\": []\n    },\n    \"Mode\": 0,\n    \"Behavioral\": true,\n    \"Description\": \"Deny access with cat to /etc/passwd with Log\"\n}"
+						},
+						"url": {
+							"raw": "https://{{base_url}}/crs/v1.2/api/Policies/",
+							"protocol": "https",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"crs",
+								"v1.2",
+								"api",
+								"Policies",
+								""
+							]
+						},
+						"description": "This policy denies access for \"cat\" executable to the file /etc/passwd.\nIf you try with \"more\" or \"less\" commands it works.\nIt also logs the behavior to the UI."
+					},
+					"response": []
+				},
+				{
+					"name": "Upload a File Policy - Block cat access to shadow",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"Name\":\"No Access to Shadow from cat\",\n   \"SchemaVersion\":\"v1.0\",\n   \"DefaultNetworkAction\":\"\",\n   \"DefaultProgramAction\":\"\",\n   \"DefaultFileAction\":\"\",\n   \"Rules\":[ \n      { \n         \"Name\":\"shadow_access_deny_rule\",\n         \"DateCreated\":\"2019-11-05T00:00:00Z\",\n         \"DateUpdated\":\"2019-11-05T00:00:00Z\",\n         \"InActive\":false,\n         \"RuleType\":\"File\",\n         \"Program\":\"/bin/cat\",\n         \"Action\":\"deny\",\n         \"File\":\"/etc/shadow\",\n         \"Syscall\":\"\"\n      }\n   ],\n   \"IgnoredSyscalls\":[ \n\n   ],\n   \"Limits\":{ \n      \"MaxNumProc\":0,\n      \"MaxProcLife\":0,\n      \"Syscalls\":[ \n\n      ],\n      \"Processes\":[ \n\n      ]\n   },\n   \"Mode\":0,\n   \"Behavioral\":false,\n   \"Description\":\"Monitor the Write event for mentioned bash files\"\n}"
+						},
+						"url": {
+							"raw": "https://{{base_url}}/crs/v1.2/api/Policies/",
+							"protocol": "https",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"crs",
+								"v1.2",
+								"api",
+								"Policies",
+								""
+							]
+						},
+						"description": "This policy blocks the program \"cat\" access to the file \"/etc/shadow\""
+					},
+					"response": []
 				}
-			},
-			"response": []
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
-			"name": "List details of a policy",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
+			"name": "Logs",
+			"item": [
+				{
+					"name": "Get All Logs",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{base_url}}/crs/v1.2/api/Logs",
+							"protocol": "https",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"crs",
+								"v1.2",
+								"api",
+								"Logs"
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://{{base_url}}/crs/v1.2/api/Policies/<REPLACE_THIS_WITH_THE_POLICY_ID_FROM_QUALYS_UI_URL>",
-					"protocol": "https",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"crs",
-						"v1.2",
-						"api",
-						"Policies",
-						"<REPLACE_THIS_WITH_THE_POLICY_ID_FROM_QUALYS_UI_URL>"
-					]
+				{
+					"name": "Get Logs From Container",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{base_url}}/crs/v1.2/api/Logs/<container_id>",
+							"protocol": "https",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"crs",
+								"v1.2",
+								"api",
+								"Logs",
+								"<container_id>"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Configurations",
+			"item": [
+				{
+					"name": "Get Configurations",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{base_url}}/crs/v1.2/api/Configs",
+							"protocol": "https",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"crs",
+								"v1.2",
+								"api",
+								"Configs"
+							]
+						},
+						"description": "Returns a list of configurations that are accessible to this user."
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Containers",
+			"item": [
+				{
+					"name": "Get A List of Secured Containers",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{base_url}}/crs/v1.2/api/Containers",
+							"protocol": "https",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"crs",
+								"v1.2",
+								"api",
+								"Containers"
+							]
+						},
+						"description": "Returns a list of all secured containers."
+					},
+					"response": []
+				},
+				{
+					"name": "Get A Container Details",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{base_url}}/crs/v1.2/api/Containers/<container_id>",
+							"protocol": "https",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"crs",
+								"v1.2",
+								"api",
+								"Containers",
+								"<container_id>"
+							]
+						},
+						"description": "Returns a specified secured container information"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a Container's Agent Configuration",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{base_url}}/crs/v1.2/api/Containers/<container_id>/AgentConfig",
+							"protocol": "https",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"crs",
+								"v1.2",
+								"api",
+								"Containers",
+								"<container_id>",
+								"AgentConfig"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Behavioral Logs for a Container",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{base_url}}/crs/v1.2/api/Containers/<container_id>/GetContainerLogs?MessageType=behavior",
+							"protocol": "https",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"crs",
+								"v1.2",
+								"api",
+								"Containers",
+								"<container_id>",
+								"GetContainerLogs"
+							],
+							"query": [
+								{
+									"key": "Action",
+									"value": "drop",
+									"disabled": true
+								},
+								{
+									"key": "MessageType",
+									"value": "behavior"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Toggle Container Behavior Between Passive and Active",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://{{base_url}}/crs/v1.2/api/Containers/<container_id>/Passivate",
+							"protocol": "https",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"crs",
+								"v1.2",
+								"api",
+								"Containers",
+								"<container_id>",
+								"Passivate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Current Total Container Resource Usage",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{base_url}}/crs/v1.2/api/Containers/<container_id>/ResourceMetrics",
+							"protocol": "https",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"crs",
+								"v1.2",
+								"api",
+								"Containers",
+								"<container_id>",
+								"ResourceMetrics"
+							]
+						},
+						"description": "Return resources currently being used in the running container. Resources includes percentage of total of cpu utilization and memory utilization."
+					},
+					"response": []
+				},
+				{
+					"name": "Get a Seccomp Profile of a Container",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{base_url}}/crs/v1.2/api/Containers/dbddb94d22e242d714f575138ffb9b9ea310014daf8df66d8c2fe982f0b6a970/Seccomp",
+							"protocol": "https",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"crs",
+								"v1.2",
+								"api",
+								"Containers",
+								"dbddb94d22e242d714f575138ffb9b9ea310014daf8df66d8c2fe982f0b6a970",
+								"Seccomp"
+							]
+						},
+						"description": "Based on the list of system calls a container has made"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Count of Containers Currently Running",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{base_url}}/crs/v1.2/api/ContainersRunning",
+							"protocol": "https",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"crs",
+								"v1.2",
+								"api",
+								"ContainersRunning"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Images",
+			"item": [
+				{
+					"name": "Count of Containers From an Image",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{base_url}}/crs/v1.2/api/Images/5e3985ba16194c0001ac9627/Containers",
+							"protocol": "https",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"crs",
+								"v1.2",
+								"api",
+								"Images",
+								"5e3985ba16194c0001ac9627",
+								"Containers"
+							]
+						},
+						"description": "Lists containers that are running from the specified image."
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Get Auth Token",
@@ -155,150 +832,6 @@
 					]
 				},
 				"description": "Your token will appear in the Body section of the response, which should be 201 Created"
-			},
-			"response": []
-		},
-		{
-			"name": "Delete a Policy",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "https://{{base_url}}/crs/v1.2/api/Policies/<REPLACE_THIS_WITH_THE_POLICY_ID_FROM_QUALYS_UI_URL>",
-					"protocol": "https",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"crs",
-						"v1.2",
-						"api",
-						"Policies",
-						"<REPLACE_THIS_WITH_THE_POLICY_ID_FROM_QUALYS_UI_URL>"
-					]
-				},
-				"description": "This request removes an existing policy, whose ID should be set in the variable {{policy_ref}}"
-			},
-			"response": []
-		},
-		{
-			"name": "Upload a Network Policy - Block SSHD from ANY",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"Name\": \"Block_sshd\",\n    \"SchemaVersion\": \"v1.0\",\n    \"DefaultNetworkAction\": \"allow\",\n    \"DefaultProgramAction\": \"allow\",\n    \"DefaultFileAction\": \"allow\",\n    \"Rules\": [\n        {\n            \"Name\": \"Block port 22\",\n             \"RuleType\": \"listener\",\n             \"ListeningPort\": 22,\n             \"Action\": \"deny\",\n             \"ListeningAddr\": \"*\"\n        }\n    ],\n    \"IgnoredSyscalls\": [],\n    \"Limits\": {\n        \"MaxNumProc\": 0,\n        \"MaxProcLife\": 0,\n        \"Syscalls\": [],\n        \"Processes\": []\n    },\n    \"Mode\": 0,\n    \"Behavioral\": false,\n    \"Description\": \"Block Any IP Address to SSHD\"\n\n}"
-				},
-				"url": {
-					"raw": "https://{{base_url}}/crs/v1.2/api/Policies/",
-					"protocol": "https",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"crs",
-						"v1.2",
-						"api",
-						"Policies",
-						""
-					]
-				},
-				"description": "Block any IP Address to SSHD"
-			},
-			"response": []
-		},
-		{
-			"name": "Upload an Application Policy - deny cat access to passwd",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"Name\": \"Deny access\",\n    \"SchemaVersion\": \"v1.0\",\n    \"DefaultNetworkAction\": \"allow\",\n    \"DefaultProgramAction\": \"allow\",\n    \"DefaultFileAction\": \"allow\",\n    \"Rules\": [\n        {\n            \"Name\": \"Deny passwd\",\n            \"InActive\": false,\n            \"RuleType\": \"syscall\",\n            \"Program\": \"/bin/cat\",\n            \"Action\": \"deny\",\n            \"File\": \"\",\n            \"Syscall\": \"sys_open\",\n            \"Arg1\": \"/etc/passwd\",\n            \"Arg2\": \"\",\n            \"Arg3\": \"\"\n        }\n    ],\n    \"IgnoredSyscalls\": [],\n    \"Limits\": {\n        \"MaxNumProc\": 0,\n        \"MaxProcLife\": 0,\n        \"Syscalls\": [],\n        \"Processes\": []\n    },\n    \"Mode\": 0,\n    \"Behavioral\": true,\n    \"Description\": \"Deny access with cat to /etc/passwd with Log\"\n}"
-				},
-				"url": {
-					"raw": "https://{{base_url}}/crs/v1.2/api/Policies/",
-					"protocol": "https",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"crs",
-						"v1.2",
-						"api",
-						"Policies",
-						""
-					]
-				},
-				"description": "This policy denies access for \"cat\" executable to the file /etc/passwd.\nIf you try with \"more\" or \"less\" commands it works.\nIt also logs the behavior to the UI."
-			},
-			"response": []
-		},
-		{
-			"name": "Upload a File Policy - Block cat access to shadow",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"Name\":\"No Access to Shadow from cat\",\n   \"SchemaVersion\":\"v1.0\",\n   \"DefaultNetworkAction\":\"\",\n   \"DefaultProgramAction\":\"\",\n   \"DefaultFileAction\":\"\",\n   \"Rules\":[ \n      { \n         \"Name\":\"shadow_access_deny_rule\",\n         \"DateCreated\":\"2019-11-05T00:00:00Z\",\n         \"DateUpdated\":\"2019-11-05T00:00:00Z\",\n         \"InActive\":false,\n         \"RuleType\":\"File\",\n         \"Program\":\"/bin/cat\",\n         \"Action\":\"deny\",\n         \"File\":\"/etc/shadow\",\n         \"Syscall\":\"\"\n      }\n   ],\n   \"IgnoredSyscalls\":[ \n\n   ],\n   \"Limits\":{ \n      \"MaxNumProc\":0,\n      \"MaxProcLife\":0,\n      \"Syscalls\":[ \n\n      ],\n      \"Processes\":[ \n\n      ]\n   },\n   \"Mode\":0,\n   \"Behavioral\":false,\n   \"Description\":\"Monitor the Write event for mentioned bash files\"\n}"
-				},
-				"url": {
-					"raw": "https://{{base_url}}/crs/v1.2/api/Policies/",
-					"protocol": "https",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"crs",
-						"v1.2",
-						"api",
-						"Policies",
-						""
-					]
-				},
-				"description": "This policy blocks the program \"cat\" access to the file \"/etc/shadow\""
 			},
 			"response": []
 		}
